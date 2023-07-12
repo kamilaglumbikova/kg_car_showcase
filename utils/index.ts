@@ -17,9 +17,9 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 
 export async function fetchCars(filters: FilterProps) {
     const {manufacturer, year, model, limit, fuel} = filters
-    
+    console.log('env',process.env.RAPID_API_KEY);
     const headers = {
-		'X-RapidAPI-Key': '1c1c5e890amsh4b5e62e83c1bbfbp17eeb2jsn1f611267b189',
+		'X-RapidAPI-Key': process.env.RAPID_API_KEY,
 		'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
 	};
     const response = await fetch(`https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel=${fuel}`, {
